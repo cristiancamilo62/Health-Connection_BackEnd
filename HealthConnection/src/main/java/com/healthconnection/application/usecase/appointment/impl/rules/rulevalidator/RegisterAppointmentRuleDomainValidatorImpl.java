@@ -1,0 +1,56 @@
+package com.healthconnection.application.usecase.appointment.impl.rules.rulevalidator;
+
+import org.springframework.stereotype.Service;
+
+import com.healthconnection.application.usecase.appointment.impl.rules.RegisterAppointmentRuleDomainValidator;
+import com.healthconnection.domain.appointment.AppointmentDomain;
+import com.healthconnection.domain.appointment.rules.domain.AppointmentIdDoesNotExistRule;
+import com.healthconnection.domain.appointment.rules.domain.AppointmentStartDateEndDateClinicNotExistRule;
+import com.healthconnection.domain.appointment.rules.domain.AppointmentStartDateEndDateHealthProfesionalNotExistRule;
+import com.healthconnection.domain.appointment.rules.domain.StartDateDoesNotBeforeEndDateAppointmentRule;
+import com.healthconnection.domain.appointment.rules.domain.StartDateDoesNotBeforeNowAppointmentRule;
+
+@Service
+public class RegisterAppointmentRuleDomainValidatorImpl implements RegisterAppointmentRuleDomainValidator{
+
+	private AppointmentIdDoesNotExistRule appointmentIdDoesNotExistRule;
+	private AppointmentStartDateEndDateHealthProfesionalNotExistRule appointmentStartDateEndDateHealthProfesionalNotExistRule;
+	private AppointmentStartDateEndDateClinicNotExistRule appointmentStartDateEndDateClinicNotExistRule;
+	private StartDateDoesNotBeforeEndDateAppointmentRule startDateBeforeEndDateAppointmentRule;
+	private StartDateDoesNotBeforeNowAppointmentRule startDateDoesNotBeforeNowAppointmentRule;
+
+	
+
+
+	public RegisterAppointmentRuleDomainValidatorImpl(AppointmentIdDoesNotExistRule appointmentIdDoesNotExistRule,
+			AppointmentStartDateEndDateHealthProfesionalNotExistRule appointmentStartDateEndDateHealthProfesionalNotExistRule,
+			AppointmentStartDateEndDateClinicNotExistRule appointmentStartDateEndDateClinicNotExistRule,
+			StartDateDoesNotBeforeEndDateAppointmentRule startDateBeforeEndDateAppointmentRule,
+			StartDateDoesNotBeforeNowAppointmentRule startDateDoesNotBeforeNowAppointmentRule) {
+		this.appointmentIdDoesNotExistRule = appointmentIdDoesNotExistRule;
+		this.appointmentStartDateEndDateHealthProfesionalNotExistRule = appointmentStartDateEndDateHealthProfesionalNotExistRule;
+		this.appointmentStartDateEndDateClinicNotExistRule = appointmentStartDateEndDateClinicNotExistRule;
+		this.startDateBeforeEndDateAppointmentRule = startDateBeforeEndDateAppointmentRule;
+		this.startDateDoesNotBeforeNowAppointmentRule = startDateDoesNotBeforeNowAppointmentRule;
+	}
+
+
+
+
+	@Override
+	public void validate(AppointmentDomain data) {
+		
+		appointmentIdDoesNotExistRule.execute(data.getId());
+		
+		startDateDoesNotBeforeNowAppointmentRule.execute(data.getStartDate());
+		
+		startDateBeforeEndDateAppointmentRule.execute(data);
+		
+		appointmentStartDateEndDateHealthProfesionalNotExistRule.execute(data);
+		
+		appointmentStartDateEndDateClinicNotExistRule.execute(data);
+		
+	}
+	
+
+}

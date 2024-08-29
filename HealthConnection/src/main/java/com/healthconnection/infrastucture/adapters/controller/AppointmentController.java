@@ -1,5 +1,6 @@
 package com.healthconnection.infrastucture.adapters.controller;
 
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -9,9 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.healthconnection.application.primaryports.dto.AppointmentDTO;
+import com.healthconnection.application.primaryports.interactor.appointment.ConsultAppointmentInteractor;
 import com.healthconnection.application.primaryports.interactor.appointment.RegisterAppointmentInteractor;
+import com.healthconnection.application.secondaryports.entity.AppointmentEntity;
 import com.healthconnection.crosscutting.exception.HealthException;
 import com.healthconnection.crosscutting.helper.ObjectHelper;
 import com.healthconnection.crosscutting.messages.MessageCatalog;
@@ -23,12 +25,17 @@ public class AppointmentController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AppointmentController.class);
 	
-	private RegisterAppointmentInteractor registerAppointmentInteractor;
+	private final RegisterAppointmentInteractor registerAppointmentInteractor;
+	private final ConsultAppointmentInteractor consultAppointmentInteractor;
 
-	public AppointmentController(RegisterAppointmentInteractor registerAppointmentInteractor) {
-		this.registerAppointmentInteractor = registerAppointmentInteractor;
-	}
 	
+	public AppointmentController(RegisterAppointmentInteractor registerAppointmentInteractor,
+			ConsultAppointmentInteractor consultAppointmentInteractor) {
+		super();
+		this.registerAppointmentInteractor = registerAppointmentInteractor;
+		this.consultAppointmentInteractor = consultAppointmentInteractor;
+	}
+
 	@GetMapping("dummy")
 	public AppointmentDTO obtener() {
 		logger.info("obteniendo dummy");
@@ -57,5 +64,14 @@ public class AppointmentController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al registrar cita. Por favor intente de nuevo");
         }
     }
+	@PostMapping("/consultar")
+	public ResponseEntity<List<AppointmentEntity>> getAppointments(@RequestBody AppointmentDTO appointmentDTO) {
+
+
+	    List<AppointmentEntity> appointments = consultAppointmentInteractor.execute(appointmentDTO);
+	    
+	    return ResponseEntity.ok(appointments);
+	}
+
 
 }

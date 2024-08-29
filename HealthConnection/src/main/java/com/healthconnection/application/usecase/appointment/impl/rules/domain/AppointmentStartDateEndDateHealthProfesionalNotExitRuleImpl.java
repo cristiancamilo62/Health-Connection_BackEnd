@@ -7,7 +7,7 @@ import com.healthconnection.application.secondaryports.mapper.concrete.Appointme
 import com.healthconnection.application.secondaryports.repository.concrete.appointment.AppointmentRepository;
 import com.healthconnection.application.usecase.appointment.exceptions.AppointmentStartDateEndDateHealthProfesionalNotExistException;
 import com.healthconnection.domain.appointment.AppointmentDomain;
-import com.healthconnection.domain.appointment.rules.AppointmentStartDateEndDateHealthProfesionalNotExistRule;
+import com.healthconnection.domain.appointment.rules.domain.AppointmentStartDateEndDateHealthProfesionalNotExistRule;
 
 
 @Service

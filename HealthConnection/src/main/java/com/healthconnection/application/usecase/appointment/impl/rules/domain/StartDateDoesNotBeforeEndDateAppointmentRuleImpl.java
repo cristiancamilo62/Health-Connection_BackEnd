@@ -1,24 +1,20 @@
 package com.healthconnection.application.usecase.appointment.impl.rules.domain;
 
-import java.sql.Date;
-
+import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
-
 import com.healthconnection.application.usecase.appointment.exceptions.StartDateDoesNotBeforeEndDateAppointmentException;
 import com.healthconnection.domain.appointment.AppointmentDomain;
-import com.healthconnection.domain.appointment.rules.StartDateDoesNotBeforeEndDateAppointmentRule;
-
-
+import com.healthconnection.domain.appointment.rules.domain.StartDateDoesNotBeforeEndDateAppointmentRule;
 
 @Service
 public class StartDateDoesNotBeforeEndDateAppointmentRuleImpl implements StartDateDoesNotBeforeEndDateAppointmentRule{
 
 	@Override
     public void execute(AppointmentDomain data) {
-        Date startDate = data.getStartDate();
-        Date endDate = data.getEndDate();
+        LocalDateTime startDate = data.getStartDate();
+        LocalDateTime endDate = data.getEndDate();
 
-        if (startDate.after(endDate)) {
+        if (startDate.isAfter(endDate)) {
             throw new StartDateDoesNotBeforeEndDateAppointmentException();
         }
     }

@@ -13,7 +13,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data
-@Getter @Setter
+@Getter
+@Setter
 @AllArgsConstructor
 public final class AffiliationRegimeDTO {
 
@@ -24,17 +25,16 @@ public final class AffiliationRegimeDTO {
 	@NotEmpty
 	@Size(min = 4, max = 15)
 	private String type;
-	
+
 	@NotNull
 	@NotEmpty
 	@Size(min = 4, max = 30)
 	private String serviceCoverages;
-	
+
 	public AffiliationRegimeDTO() {
 		setId(UuidHelper.DEFAULT_UUID);
 		setType(TextHelper.EMPTY);
 		setServiceCoverages(TextHelper.EMPTY);
 	}
-	
-	
+
 }

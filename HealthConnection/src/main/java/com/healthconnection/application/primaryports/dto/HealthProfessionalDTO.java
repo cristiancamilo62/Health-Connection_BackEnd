@@ -1,5 +1,6 @@
 package com.healthconnection.application.primaryports.dto;
 
+import java.sql.Date;
 import java.util.UUID;
 import org.springframework.stereotype.Component;
 import com.healthconnection.crosscutting.helper.TextHelper;
@@ -19,9 +20,18 @@ public class HealthProfessionalDTO {
     private String middleName;
     private String lastName;
     private String middleLastName;
-	private ServiceTypeDTO service;
+    private String email;
+    private boolean confirmedEmail;
+    private String phoneNumber;
+    private boolean confirmedPhoneNumber;
+    private String password;
+    private Date dateBirth;
+    private Date startDate;
+	private ServiceTypeDTO serviceType;
 	private IdentificationTypeDTO identificationType;
 	private RoleDTO role;
+	private boolean accountStatement;
+	private String profilePictureUrl;
 	
 	public HealthProfessionalDTO() {
 		setId(UuidHelper.DEFAULT_UUID);
@@ -30,16 +40,18 @@ public class HealthProfessionalDTO {
 		setMiddleName(TextHelper.EMPTY);
 		setLastName(TextHelper.EMPTY);
 		setMiddleLastName(TextHelper.EMPTY);
-		setService(new ServiceTypeDTO());
+		setEmail(TextHelper.EMPTY);
+        setConfirmedEmail(false);
+        setPhoneNumber(TextHelper.EMPTY);
+        setConfirmedPhoneNumber(false);
+        setPassword(TextHelper.EMPTY);
+        setDateBirth(new Date(0));
+        setStartDate(new Date(0));
+		setServiceType(new ServiceTypeDTO());
 		setIdentificationType(new IdentificationTypeDTO());
 		setRole(new RoleDTO());
+		setAccountStatement(false);
+		setProfilePictureUrl(TextHelper.EMPTY);
 	}
-	
-	
-	
-	
-	
-
-	
 	
 }

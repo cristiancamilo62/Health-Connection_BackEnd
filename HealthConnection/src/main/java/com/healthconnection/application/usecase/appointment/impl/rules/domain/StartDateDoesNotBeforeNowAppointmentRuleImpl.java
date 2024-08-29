@@ -1,26 +1,23 @@
 package com.healthconnection.application.usecase.appointment.impl.rules.domain;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
 import com.healthconnection.application.usecase.appointment.exceptions.StartDateDoesNotBeforeNowAppointmentException;
-import com.healthconnection.domain.appointment.rules.StartDateDoesNotBeforeNowAppointmentRule;
-
+import com.healthconnection.domain.appointment.rules.domain.StartDateDoesNotBeforeNowAppointmentRule;
 
 @Service
 public class StartDateDoesNotBeforeNowAppointmentRuleImpl implements StartDateDoesNotBeforeNowAppointmentRule {
 
     @Override
-    public void execute(Date startDate) {
+    public void execute(LocalDateTime startDate) {
     	
-        LocalDate currentDate = LocalDate.now();
+        LocalDateTime currentDate = LocalDateTime.now();
 
-        LocalDate startDateLocal = startDate.toLocalDate();
-
-        if (startDateLocal.isBefore(currentDate)) {
+        if (startDate.isBefore(currentDate)) {
             throw new StartDateDoesNotBeforeNowAppointmentException();
         }
     }
 }
+

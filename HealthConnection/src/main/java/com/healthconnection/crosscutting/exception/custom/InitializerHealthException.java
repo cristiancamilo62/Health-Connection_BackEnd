@@ -3,7 +3,7 @@ package com.healthconnection.crosscutting.exception.custom;
 import com.healthconnection.crosscutting.exception.HealthException;
 import com.healthconnection.crosscutting.exception.enums.LocationException;
 
-public final class InitializerHealthException extends HealthException {
+public class InitializerHealthException extends HealthException {
 
 	private static final long serialVersionUID = 1L;
 	private static final LocationException location = LocationException.DATA;

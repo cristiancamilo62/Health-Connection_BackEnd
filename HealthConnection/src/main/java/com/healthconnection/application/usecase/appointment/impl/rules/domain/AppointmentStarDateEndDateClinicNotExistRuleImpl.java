@@ -3,7 +3,7 @@ package com.healthconnection.application.usecase.appointment.impl.rules.domain;
 import org.springframework.stereotype.Service;
 import com.healthconnection.application.secondaryports.repository.concrete.appointment.AppointmentRepository;
 import com.healthconnection.domain.appointment.AppointmentDomain;
-import com.healthconnection.domain.appointment.rules.AppointmentStartDateEndDateClinicNotExistRule;
+import com.healthconnection.domain.appointment.rules.domain.AppointmentStartDateEndDateClinicNotExistRule;
 
 @Service
 public class AppointmentStarDateEndDateClinicNotExistRuleImpl implements AppointmentStartDateEndDateClinicNotExistRule{

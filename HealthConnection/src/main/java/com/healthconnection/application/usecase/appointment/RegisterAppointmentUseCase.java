@@ -1,6 +1,7 @@
 package com.healthconnection.application.usecase.appointment;
 
 import org.springframework.stereotype.Service;
+
 import com.healthconnection.domain.appointment.AppointmentDomain;
 
 @Service

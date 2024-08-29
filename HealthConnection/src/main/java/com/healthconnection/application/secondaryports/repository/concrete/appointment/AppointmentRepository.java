@@ -1,6 +1,7 @@
 package com.healthconnection.application.secondaryports.repository.concrete.appointment;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -11,8 +12,11 @@ import com.healthconnection.application.secondaryports.entity.HealthProfessional
 public interface AppointmentRepository extends JpaRepository<AppointmentEntity, UUID>{
 	
 	boolean existsByStartDateAndEndDateAndHealthProfessional(
-            Date startDate, Date endDate, HealthProfessionalEntity healthProfessional);
+            LocalDateTime startDate, LocalDateTime endDate, HealthProfessionalEntity healthProfessional);
 	
-	boolean existsByStartDateAndEndDateAndAppointmentServiceDataClinic(Date startDate, Date endDate, String clinic);
+	boolean existsByStartDateAndEndDateAndAppointmentServiceDataClinic(LocalDateTime startDate,
+			LocalDateTime endDate, String clinic);
+	
+	List<AppointmentEntity> findByHealthProfessionalIdAndStartDateBetween(UUID healthProfessionalId, LocalDateTime startDate, LocalDateTime endDate);
 
 }

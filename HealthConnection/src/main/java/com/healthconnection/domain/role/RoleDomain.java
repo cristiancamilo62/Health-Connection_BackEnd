@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.healthconnection.crosscutting.helper.ObjectHelper;
 import com.healthconnection.crosscutting.helper.TextHelper;
 import com.healthconnection.crosscutting.helper.UuidHelper;
 
@@ -30,7 +31,7 @@ public class RoleDomain {
 	}
 
 	public final void setId(UUID id) {
-		this.id = id;
+		this.id = ObjectHelper.getDefault(id, UuidHelper.DEFAULT_UUID);
 	}
 
 	public final String getName() {

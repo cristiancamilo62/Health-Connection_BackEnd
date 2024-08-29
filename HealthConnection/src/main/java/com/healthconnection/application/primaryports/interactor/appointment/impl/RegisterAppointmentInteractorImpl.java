@@ -1,8 +1,6 @@
 package com.healthconnection.application.primaryports.interactor.appointment.impl;
 
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
-
 import com.healthconnection.application.primaryports.dto.AppointmentDTO;
 import com.healthconnection.application.primaryports.interactor.appointment.RegisterAppointmentInteractor;
 import com.healthconnection.application.primaryports.mapper.concrete.AppointmentMapperDTO;

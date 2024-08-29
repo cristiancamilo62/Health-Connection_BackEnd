@@ -6,9 +6,9 @@ import com.healthconnection.crosscutting.helper.ObjectHelper;
 import com.healthconnection.crosscutting.helper.TextHelper;
 import com.healthconnection.crosscutting.helper.UuidHelper;
 import com.healthconnection.domain.affiliationregime.AffiliationRegimeDomain;
+import com.healthconnection.domain.eps.EpsDomain;
 import com.healthconnection.domain.identificationtype.IdentificationTypeDomain;
 import com.healthconnection.domain.role.RoleDomain;
-import com.healthconnection.domain.eps.EpsDomain;
 
 @Service
 public class PatientDomain {
@@ -204,7 +204,7 @@ public class PatientDomain {
 	}
 
 	public final void setPassword(String password) {
-		this.password = ObjectHelper.getDefault(TextHelper.applyTrim(email), TextHelper.EMPTY);
+		this.password = ObjectHelper.getDefault(TextHelper.applyTrim(password), TextHelper.EMPTY);
 	}
 
 	public final void setIdentificationType(IdentificationTypeDomain identificationType) {

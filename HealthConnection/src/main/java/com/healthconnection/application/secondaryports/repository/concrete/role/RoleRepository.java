@@ -9,6 +9,6 @@ import com.healthconnection.application.secondaryports.entity.RoleEntity;
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, UUID>{
 	
-	RoleEntity findByName(String Email);
+	RoleEntity findByName(String email);
 
 }

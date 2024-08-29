@@ -11,25 +11,28 @@ public class UuidHelper {
         super();
     }
 
-    public static final UUID generarNuevoUuid() {
+    public static final UUID generateNewUuid() {
         return UUID.randomUUID();
     }
 
-    public static final UUID obtenerDefectoUUID(final UUID uuidValue) {
-        return (esUuidNulo(uuidValue)) ? DEFAULT_UUID : uuidValue;
+    public static final UUID getDefaultUuid(final UUID uuidValue) {
+        return (isUuidNull(uuidValue)) ? DEFAULT_UUID : uuidValue;
     }
 
-   
-    public static final boolean valorDefectoONulo(final UUID uuidValue) {
-        return (esUuidNulo(uuidValue) || uuidValue.equals(DEFAULT_UUID));
+    public static final boolean isDefaultOrNull(final UUID uuidValue) {
+        return (isUuidNull(uuidValue) || uuidValue.equals(DEFAULT_UUID));
     }
     
-    public static final boolean valorDefecto(final UUID uuidValue) {
-        return (!esUuidNulo(uuidValue) && uuidValue.equals(DEFAULT_UUID));
+    public static final boolean isDefault(final UUID uuidValue) {
+        return (!isUuidNull(uuidValue) && uuidValue.equals(DEFAULT_UUID));
     }
 
-    public static final boolean esUuidNulo(final UUID uuidValue) {
+    public static final boolean isUuidNull(final UUID uuidValue) {
         return ObjectHelper.isNull(uuidValue);
     }
-
+    
+    public static final boolean isUuidEmpty(final UUID uuidValue) {
+    	return ObjectHelper.isEmpty(uuidValue);
+    }
 }
+

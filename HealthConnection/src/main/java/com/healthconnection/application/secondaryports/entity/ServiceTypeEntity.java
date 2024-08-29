@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "TipoServicio")
+@Table(name = "ServiceType")
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor

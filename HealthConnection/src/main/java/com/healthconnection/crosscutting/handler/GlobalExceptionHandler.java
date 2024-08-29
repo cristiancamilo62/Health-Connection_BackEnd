@@ -1,6 +1,8 @@
 package com.healthconnection.crosscutting.handler;
 
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.healthconnection.crosscutting.exception.HealthException;
 import com.healthconnection.crosscutting.exception.custom.*;
 import com.healthconnection.crosscutting.messages.MessageCatalog;
 import com.healthconnection.crosscutting.messages.enums.MessageCode;
@@ -52,8 +54,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
     }
 
-    @ExceptionHandler(DTOHealthException.class)
-    public ResponseEntity<String> handleDTOHealthException(DTOHealthException ex) {
+    @ExceptionHandler(HealthException.class)
+    public ResponseEntity<String> handleDTOHealthException(HealthException ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
     }
 

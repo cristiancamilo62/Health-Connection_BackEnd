@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.healthconnection.application.secondaryports.repository.concrete.appointment.AppointmentRepository;
 import com.healthconnection.application.usecase.appointment.exceptions.AppointmentIdNotExistExeption;
-import com.healthconnection.domain.appointment.rules.AppointmentIdDoesNotExistRule;
+import com.healthconnection.domain.appointment.rules.domain.AppointmentIdDoesNotExistRule;
 
 
 @Service

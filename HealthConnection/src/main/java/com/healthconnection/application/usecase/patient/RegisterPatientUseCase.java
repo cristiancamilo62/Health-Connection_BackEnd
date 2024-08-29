@@ -1,15 +1,12 @@
 package com.healthconnection.application.usecase.patient;
 
-
 import org.springframework.stereotype.Service;
-
+import com.healthconnection.application.usecase.UseCaseWithoutReturn;
 import com.healthconnection.domain.patient.PatientDomain;
 
-import jakarta.validation.Valid;
 
 @Service
-public interface RegisterPatientUseCase {
+public interface RegisterPatientUseCase extends UseCaseWithoutReturn<PatientDomain>{
 	
-	void execute(PatientDomain patientDomain);
 
 }
